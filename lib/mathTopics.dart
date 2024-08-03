@@ -24,8 +24,8 @@ class MathTopics extends StatelessWidget {
                 ),
               ),
 
-              Padding(
-                padding: const EdgeInsets.only(top: 70, bottom: 10, left: 30, right: 30),
+              const Padding(
+                padding: EdgeInsets.only(top: 70, bottom: 10, left: 30, right: 30),
                 child: Column(
                   children: [
                     Align(
@@ -39,7 +39,7 @@ class MathTopics extends StatelessWidget {
                           //     // Handle Mathematics button press
                           //   }, imagePath: 'assets/db_img.jpg',
                           // ),
-                          const SizedBox(height: 20),
+                          SizedBox(height: 20),
                           // CustomButton(
                           //   text: "Science",
                           //   color: Colors.green,

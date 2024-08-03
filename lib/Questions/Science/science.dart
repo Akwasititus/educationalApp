@@ -1,7 +1,9 @@
+import 'package:educationalapp/Questions/Science/QuizScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class MathematicsTopics extends StatelessWidget {
-  const MathematicsTopics({super.key});
+class Science extends StatelessWidget {
+  const Science({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -56,21 +58,21 @@ class MathematicsTopics extends StatelessWidget {
 // Create a list of ButtonData objects
 List<ButtonData> buttons = [
   ButtonData(
-    text: "Button 1",
+    text: "Plants and Animals",
     imagePath: "assets/image1.jpg",
     onPressed: () {
-      print("Button 1 pressed");
+      Get.to(QuizScreen());
     },
   ),
   ButtonData(
-    text: "Button 2",
+    text: "Human Body",
     imagePath: "assets/image2.jpg",
     onPressed: () {
       print("Button 2 pressed");
     },
   ),
   ButtonData(
-    text: "Button 3",
+    text: "The Solar System",
     imagePath: "assets/image3.jpg",
     onPressed: () {
       print("Button 3 pressed");
@@ -78,7 +80,7 @@ List<ButtonData> buttons = [
   ),
 
   ButtonData(
-    text: "Button 3",
+    text: "Habitats",
     imagePath: "assets/image3.jpg",
     onPressed: () {
       print("Button 3 pressed");
@@ -86,7 +88,7 @@ List<ButtonData> buttons = [
   ),
 
   ButtonData(
-    text: "Button 3",
+    text: "Matter",
     imagePath: "assets/image3.jpg",
     onPressed: () {
       print("Button 3 pressed");
@@ -94,7 +96,7 @@ List<ButtonData> buttons = [
   ),
 
   ButtonData(
-    text: "Button 3",
+    text: "Energy",
     imagePath: "assets/image3.jpg",
     onPressed: () {
       print("Button 3 pressed");
