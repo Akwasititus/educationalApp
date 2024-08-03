@@ -1,8 +1,6 @@
-import 'package:educationalapp/mathTopics.dart';
+import 'package:educationalapp/Questions/Science/science.dart';
 import 'package:educationalapp/maths.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class LearningPage extends StatelessWidget {
   final String username;
@@ -28,34 +26,34 @@ class LearningPage extends StatelessWidget {
               ),
             ),
 
-            Padding(
-              padding: const EdgeInsets.only(top: 70, bottom: 10, left: 30, right: 30),
-              child: Column(
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Hello $username,",
-                        style: const TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
+            SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 100, bottom: 40, left: 30, right: 30),
+                child: Column(
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Hello $username,",
+                          style: const TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
                         ),
-                      ),
-                      const Text(
-                        "Welcome. What do you want to learn today?",
-                        style: TextStyle(
-                          fontSize: 28,
-                          color: Colors.white,
+                        const Text(
+                          "What do you want to learn today?",
+                          style: TextStyle(
+                            fontFamily: 'Merienda-VariableFont_wght',
+                            fontSize: 28,
+                            color: Colors.white,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 150),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Column(
+                      ],
+                    ),
+                    const SizedBox(height: 80),
+                    Column(
                       children: [
                         CustomButton(
                           text: "Mathematics",
@@ -73,18 +71,47 @@ class LearningPage extends StatelessWidget {
 
                           }, imagePath: 'assets/db_img.jpg',
                         ),
-                        const SizedBox(height: 20),
                         CustomButton(
                           text: "Science",
                           color: Colors.green,
                           onPressed: () {
-                            // Handle Science button press
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>  const Science(),
+                              ),
+                            );
                           }, imagePath: 'assets/db_img.jpg',
                         ),
+                        CustomButton(
+                          text: "English",
+                          color: Colors.green,
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>  const Science(),
+                              ),
+                            );
+                          }, imagePath: 'assets/db_img.jpg',
+                        ),
+                        CustomButton(
+                          text: "OWOP",
+                          color: Colors.green,
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>  const Science(),
+                              ),
+                            );
+                          }, imagePath: 'assets/db_img.jpg',
+                        ),
+                        // const SizedBox(height: 20),
                       ],
-                    ),
-                  )
-                ],
+                    )
+                  ],
+                ),
               ),
             ),
 
@@ -103,18 +130,18 @@ class CustomButton extends StatelessWidget {
   final String imagePath;
 
   const CustomButton({
-    Key? key,
+    super.key,
     required this.text,
     required this.color,
     required this.onPressed,
     required this.imagePath,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: 200,
+      height: 150,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
@@ -138,6 +165,7 @@ class CustomButton extends StatelessWidget {
               text,
               style: const TextStyle(
                 fontSize: 24,
+                fontFamily: 'Merienda-VariableFont_wght',
                 fontWeight: FontWeight.bold,
                 color: Colors.white, // Adjust text color for visibility
               ),
