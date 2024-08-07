@@ -18,7 +18,7 @@ class _SolarSystemScreenState extends State<SolarSystemScreen> {
   final Map<int, int> _selectedAnswers = {};
 
   void _submitAnswers() {
-    if (_selectedAnswers.length < solarsystemQuestion.length) {
+    if (_selectedAnswers.length < solarSystemQuestion.length) {
       _showIncompleteAnswersDialog();
     } else {
       Navigator.push(
@@ -49,9 +49,9 @@ class _SolarSystemScreenState extends State<SolarSystemScreen> {
     return Scaffold(
       appBar: AppBar(title: const Text('Quiz')),
       body: ListView.builder(
-        itemCount:  solarsystemQuestion.length,
+        itemCount:  solarSystemQuestion.length,
         itemBuilder: (context, index) {
-          final question = solarsystemQuestion[index];
+          final question = solarSystemQuestion[index];
           return Card(
             margin: const EdgeInsets.all(10.0),
             child: Padding(

@@ -1,4 +1,5 @@
 import 'package:educationalapp/Questions/Science/QuizScreen.dart';
+import 'package:educationalapp/Questions/The%20solar%20system/solarsystem.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -63,21 +64,21 @@ List<ButtonData> buttons = [
     text: "Plants and Animals",
     imagePath: "assets/image1.jpg",
     onPressed: () {
-      Get.to(QuizScreen());
+      Get.to(const QuizScreen());
     },
   ),
   ButtonData(
     text: "Human Body",
     imagePath: "assets/image2.jpg",
     onPressed: () {
-        Get.to( HumanBodyScreen());
+        Get.to( const HumanBodyScreen());
     },
   ),
   ButtonData(
     text: "The Solar System",
     imagePath: "assets/image3.jpg",
     onPressed: () {
-      print("Button 3 pressed");
+      Get.to( const SolarSystemScreen());
     },
   ),
 

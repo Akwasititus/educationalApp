@@ -13,7 +13,7 @@ class SolarSystemQuestion {
 }
 
 
-final List<SolarSystemQuestion> solarsystemQuestion  = [
+final List<SolarSystemQuestion> solarSystemQuestion  = [
    SolarSystemQuestion(
     questionText: 'What is the largest planet in our solar system',
     options: ['Earth', 'Jupiter', 'Saturn', ],
