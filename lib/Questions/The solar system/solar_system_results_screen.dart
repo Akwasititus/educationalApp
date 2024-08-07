@@ -21,7 +21,7 @@ class SolarSystemResultsScreen extends StatefulWidget {
   _SolarSystemResultsScreenState createState() => _SolarSystemResultsScreenState();
 }
 
-class _SolarSystemResultsScreenState extends State< _SolarSystemResultsScreenState> {
+class _SolarSystemResultsScreenState extends State<SolarSystemResultsScreen> {
   late ConfettiController _confettiController;
 
   @override
