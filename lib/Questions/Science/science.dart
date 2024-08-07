@@ -2,6 +2,8 @@ import 'package:educationalapp/Questions/Science/QuizScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../human_body_question/human_body.dart';
+
 class Science extends StatelessWidget {
   const Science({super.key});
 
@@ -55,7 +57,7 @@ class Science extends StatelessWidget {
   }
 }
 
-// Create a list of ButtonData objects
+// Create a list of ButtonData objects HumanBodyScreen
 List<ButtonData> buttons = [
   ButtonData(
     text: "Plants and Animals",
@@ -68,7 +70,7 @@ List<ButtonData> buttons = [
     text: "Human Body",
     imagePath: "assets/image2.jpg",
     onPressed: () {
-      print("Button 2 pressed");
+        Get.to( HumanBodyScreen());
     },
   ),
   ButtonData(
