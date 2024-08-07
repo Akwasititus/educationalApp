@@ -63,11 +63,61 @@ final List<SolarSystemQuestion> solarSystemQuestion  = [
     mark: 10,
   ),
 
+    SolarSystemQuestion(
+    questionText: 'Which planet is farthest to the Sun?',
+    options: ['Mercury', 'Earth', 'Neptune', ],
+    correctAnswerIndex: 2,
+    mark: 10,
+  ),
 
+    SolarSystemQuestion(
+    questionText: 'Which planet has the most moon?',
+    options: ['Mercury', 'Jupiter', 'Mars', ],
+    correctAnswerIndex: 1,
+    mark: 10,
+  ),
 
+    SolarSystemQuestion(
+    questionText: 'Which planet has a ring?',
+    options: ['Saturn', 'Earth', 'Mars', ],
+    correctAnswerIndex: 0,
+    mark: 10,
+  ),
 
+    SolarSystemQuestion(
+    questionText: 'The Sun is also a star.',
+    options: ['True', 'False', 'None', ],
+    correctAnswerIndex: 0,
+    mark: 10,
+  ),
 
+    SolarSystemQuestion(
+    questionText: 'Which planet is closest to the Sun?',
+    options: ['Mercury', 'Earth', 'Mars', ],
+    correctAnswerIndex: 0,
+    mark: 10,
+  ),
 
-  
+    SolarSystemQuestion(
+    questionText: 'Which planet known for it blue color?',
+    options: ['Mercury', 'Neptune', 'Mars', ],
+    correctAnswerIndex: 0,
+    mark: 10,
+  ),
+
+    SolarSystemQuestion(
+    questionText: 'Which planet is closest to the Sun?',
+    options: ['Mercury', 'Earth', 'Mars', ],
+    correctAnswerIndex: 0,
+    mark: 10,
+  ),
+
+    SolarSystemQuestion(
+    questionText: 'Which planet is planet supports life?',
+    options: ['Mercury', 'Earth', 'Mars', ],
+    correctAnswerIndex: 1,
+    mark: 10,
+  ),
+ 
 
 ];

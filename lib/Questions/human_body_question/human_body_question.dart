@@ -128,7 +128,7 @@ final List< HumanBodyQuestion> humanBodyQuestion  = [
 
   HumanBodyQuestion(
     questionText: 'What do we use to taste food?',
-    options: ['Hands', 'Nose', 'Ears', 'Eyes'],
+    options: ['Hands', 'Tongue', 'Ears', 'Eyes'],
     correctAnswerIndex: 1,
     mark: 10,
   ),
@@ -148,7 +148,7 @@ final List< HumanBodyQuestion> humanBodyQuestion  = [
   ),
 
   HumanBodyQuestion(
-    questionText: '?',
+    questionText: 'How many teeth does a typical adult human have?',
     options: ['30', '28', '32', '34'],
     correctAnswerIndex: 2,
     mark: 10,
