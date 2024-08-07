@@ -4,21 +4,23 @@ import 'package:educationalapp/Questions/Science/sciece_questions.dart';
 import 'package:flutter/material.dart';
 import 'package:confetti/confetti.dart';
 
-class ResultScreen extends StatefulWidget {
-  final List<Question> questions;
+import 'human_body_question.dart';
+
+class HumanBodyResultsScreen extends StatefulWidget {
+  final List<HumanBodyQuestion> questions;
   final Map<int, int> selectedAnswers;
 
-  const ResultScreen({
+  const HumanBodyResultsScreen({
     super.key,
     required this.questions,
     required this.selectedAnswers,
   });
 
   @override
-  _ResultScreenState createState() => _ResultScreenState();
+  _HumanBodyResultsScreenState createState() => _HumanBodyResultsScreenState();
 }
 
-class _ResultScreenState extends State<ResultScreen> {
+class _HumanBodyResultsScreenState extends State<HumanBodyResultsScreen> {
   late ConfettiController _confettiController;
 
   @override

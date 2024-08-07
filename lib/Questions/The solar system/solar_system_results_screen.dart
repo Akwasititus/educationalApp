@@ -1,24 +1,27 @@
 
 
-import 'package:educationalapp/Questions/Science/sciece_questions.dart';
 import 'package:flutter/material.dart';
 import 'package:confetti/confetti.dart';
 
-class ResultScreen extends StatefulWidget {
-  final List<Question> questions;
+import 'solar_system_question.dart';
+
+
+
+class SolarSystemResultsScreen extends StatefulWidget {
+  final List<SolarSystemQuestion> questions;
   final Map<int, int> selectedAnswers;
 
-  const ResultScreen({
+  const SolarSystemResultsScreen({
     super.key,
     required this.questions,
     required this.selectedAnswers,
   });
 
   @override
-  _ResultScreenState createState() => _ResultScreenState();
+  _SolarSystemResultsScreenState createState() => _SolarSystemResultsScreenState();
 }
 
-class _ResultScreenState extends State<ResultScreen> {
+class _SolarSystemResultsScreenState extends State< _SolarSystemResultsScreenState> {
   late ConfettiController _confettiController;
 
   @override
