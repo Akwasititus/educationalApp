@@ -18,7 +18,7 @@ class SolarSystemResultsScreen extends StatefulWidget {
   });
 
   @override
-  _SolarSystemResultsScreenState createState() => _SolarSystemResultsScreenState();
+   _SolarSystemResultsScreenState createState() => _SolarSystemResultsScreenState();
 }
 
 class _SolarSystemResultsScreenState extends State<SolarSystemResultsScreen> {
