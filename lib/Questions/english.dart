@@ -3,12 +3,14 @@ import 'package:educationalapp/Questions/The%20solar%20system/solarsystem.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../Matter/matter.dart';
-import '../The habitat/habitat.dart';
-import '../human_body_question/human_body.dart';
+import 'Grammer/grammer.dart';
 
-class Science extends StatelessWidget {
-  const Science({super.key});
+
+
+
+
+class English extends StatelessWidget {
+  const English({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -63,45 +65,13 @@ class Science extends StatelessWidget {
 // Create a list of ButtonData objects HumanBodyScreen
 List<ButtonData> buttons = [
   ButtonData(
-    text: "Plants and Animals",
+    text: "Grammer",
     imagePath: "assets/image1.jpg",
     onPressed: () {
-      Get.to(const QuizScreen());
+      Get.to(const GrammerScreen());
     },
   ),
-  ButtonData(
-    text: "Human Body",
-    imagePath: "assets/image2.jpg",
-    onPressed: () {
-        Get.to( const HumanBodyScreen());
-    },
-  ),
-  ButtonData(
-    text: "The Solar System",
-    imagePath: "assets/image3.jpg",
-    onPressed: () {
-      Get.to( const SolarSystemScreen());
-    },
-  ),
-
-  ButtonData(
-    text: "Habitats",
-    imagePath: "assets/image3.jpg",
-    onPressed: () {
-        Get.to( const HabitatScreen());
-      
-    },
-  ),
-
-  ButtonData(
-    text: "Matter",
-    imagePath: "assets/image3.jpg",
-    onPressed: () {
-        Get.to( const MatterScreen());
-      
-    },
-  ),
-
+ 
 ];
 
 class ButtonListView extends StatelessWidget {

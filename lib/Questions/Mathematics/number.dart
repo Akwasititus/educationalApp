@@ -2,30 +2,30 @@
 import 'package:educationalapp/ResultScreen.dart';
 import 'package:flutter/material.dart';
 
-import 'habitat_question.dart';
-import 'habitat_results_screen.dart';
+
+import 'number_question.dart';
+import 'number_results_screen.dart';
 
 
 
-
-class HabitatScreen extends StatefulWidget {
-  const HabitatScreen({super.key});
+class NumberScreen extends StatefulWidget {
+  const NumberScreen({super.key});
 
   @override
-  _HabitatScreenState createState() => _HabitatScreenState();
+  _NumberScreenState createState() => _NumberScreenState();
 }
 
-class _HabitatScreenState extends State<HabitatScreen> {
+class _NumberScreenState extends State<NumberScreen> {
   final Map<int, int> _selectedAnswers = {};
 
   void _submitAnswers() {
-    if (_selectedAnswers.length <habitatQuestion.length) {
+    if (_selectedAnswers.length < numberQuestion.length) {
       _showIncompleteAnswersDialog();
     } else {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => HabitatResultsScreen(questions: habitatQuestion, selectedAnswers: _selectedAnswers),
+          builder: (context) => NumberResultsScreen(questions: numberQuestion, selectedAnswers: _selectedAnswers),
         ),
       );
     }
@@ -50,9 +50,9 @@ class _HabitatScreenState extends State<HabitatScreen> {
     return Scaffold(
       appBar: AppBar(title: const Text('Quiz')),
       body: ListView.builder(
-        itemCount:  habitatQuestion.length,
+        itemCount: numberQuestion.length,
         itemBuilder: (context, index) {
-          final question = habitatQuestion[index];
+          final question = numberQuestion[index];
           return Card(
             margin: const EdgeInsets.all(10.0),
             child: Padding(

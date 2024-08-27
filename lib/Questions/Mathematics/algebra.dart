@@ -2,30 +2,31 @@
 import 'package:educationalapp/ResultScreen.dart';
 import 'package:flutter/material.dart';
 
-import 'habitat_question.dart';
-import 'habitat_results_screen.dart';
+import 'algebra_question.dart';
+import 'algebra_results_screen.dart';
 
 
 
 
-class HabitatScreen extends StatefulWidget {
-  const HabitatScreen({super.key});
+
+class AlgebraScreen extends StatefulWidget {
+  const AlgebraScreen({super.key});
 
   @override
-  _HabitatScreenState createState() => _HabitatScreenState();
+  _AlgebraScreenState createState() => _AlgebraScreenState();
 }
 
-class _HabitatScreenState extends State<HabitatScreen> {
+class _AlgebraScreenState extends State<AlgebraScreen> {
   final Map<int, int> _selectedAnswers = {};
 
   void _submitAnswers() {
-    if (_selectedAnswers.length <habitatQuestion.length) {
+    if (_selectedAnswers.length < algebraQuestion.length) {
       _showIncompleteAnswersDialog();
     } else {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => HabitatResultsScreen(questions: habitatQuestion, selectedAnswers: _selectedAnswers),
+          builder: (context) => AlgebraResultsScreen(questions: algebraQuestion, selectedAnswers: _selectedAnswers),
         ),
       );
     }
@@ -50,9 +51,9 @@ class _HabitatScreenState extends State<HabitatScreen> {
     return Scaffold(
       appBar: AppBar(title: const Text('Quiz')),
       body: ListView.builder(
-        itemCount:  habitatQuestion.length,
+        itemCount: algebraQuestion.length,
         itemBuilder: (context, index) {
-          final question = habitatQuestion[index];
+          final question = algebraQuestion[index];
           return Card(
             margin: const EdgeInsets.all(10.0),
             child: Padding(

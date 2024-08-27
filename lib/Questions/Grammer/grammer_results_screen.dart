@@ -1,55 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:confetti/confetti.dart';
 
-import 'habitat_question.dart';
+import 'grammer_quetion.dart';
 
-class HabitatResultsScreen extends StatefulWidget {
-  final List<HabitatQuestion> questions;
+class GrammerResultsScreen extends StatefulWidget {
+  final List<GrammerQuestion> questions;
   final Map<int, int> selectedAnswers;
 
-  const HabitatResultsScreen({
+  const GrammerResultsScreen({
     super.key,
     required this.questions,
     required this.selectedAnswers,
   });
 
   @override
-  _HabitatResultsScreenState createState() => _HabitatResultsScreenState();
+  _GrammerResultsScreenState createState() => _GrammerResultsScreenState();
 }
 
-class _HabitatResultsScreenState extends State<HabitatResultsScreen> {
+class _GrammerResultsScreenState extends State<GrammerResultsScreen> {
   late ConfettiController _confettiController;
-  int totalCorrectAnswers = 0;
-  int totalWrongAnswers = 0;
 
   @override
   void initState() {
     super.initState();
     _confettiController = ConfettiController(duration: const Duration(seconds: 20));
-    calculateResults(); // Calculate correct and wrong answers on initialization
   }
 
   @override
   void dispose() {
     _confettiController.dispose();
     super.dispose();
-  }
-
-  void calculateResults() {
-    totalCorrectAnswers = 0;
-    totalWrongAnswers = 0;
-
-    for (int i = 0; i < widget.questions.length; i++) {
-      if (widget.selectedAnswers[i] == widget.questions[i].correctAnswerIndex) {
-        totalCorrectAnswers++;
-      } else {
-        totalWrongAnswers++;
-      }
-    }
-
-    setState(() {
-      // Trigger UI update with new scores
-    });
   }
 
   int calculateTotalScore() {
@@ -60,6 +40,20 @@ class _HabitatResultsScreenState extends State<HabitatResultsScreen> {
       }
     }
     return totalScore;
+  }
+
+  int calculateCorrectAnswers() {
+    int correctCount = 0;
+    for (int i = 0; i < widget.questions.length; i++) {
+      if (widget.selectedAnswers[i] == widget.questions[i].correctAnswerIndex) {
+        correctCount++;
+      }
+    }
+    return correctCount;
+  }
+
+  int calculateWrongAnswers() {
+    return widget.questions.length - calculateCorrectAnswers();
   }
 
   String getResultMessage(int totalScore) {
@@ -76,6 +70,8 @@ class _HabitatResultsScreenState extends State<HabitatResultsScreen> {
   @override
   Widget build(BuildContext context) {
     final totalScore = calculateTotalScore();
+    final correctAnswers = calculateCorrectAnswers();
+    final wrongAnswers = calculateWrongAnswers();
     final resultMessage = getResultMessage(totalScore);
 
     return Scaffold(
@@ -96,13 +92,13 @@ class _HabitatResultsScreenState extends State<HabitatResultsScreen> {
                       resultMessage,
                       style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 10),
                     Text(
-                      'Correct Answers: $totalCorrectAnswers',
+                      'Correct Answers: $correctAnswers',
                       style: const TextStyle(fontSize: 20, color: Colors.green),
                     ),
                     Text(
-                      'Wrong Answers: $totalWrongAnswers',
+                      'Wrong Answers: $wrongAnswers',
                       style: const TextStyle(fontSize: 20, color: Colors.red),
                     ),
                   ],

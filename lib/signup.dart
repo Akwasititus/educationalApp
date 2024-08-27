@@ -70,8 +70,8 @@ class _SignupState extends State<Signup> {
                         controller: _emailController,
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
-                          labelText: 'Email',
-                          hintText: 'your.email@example.com',
+                          labelText: 'Username',
+                          hintText: 'username',
                           labelStyle: const TextStyle(color: Colors.white),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
@@ -97,15 +97,15 @@ class _SignupState extends State<Signup> {
                         ),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Please enter your email';
+                            return 'Please enter your username';
                           }
-                          if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value)) {
-                            return 'Please enter a valid email address';
+                          if (!RegExp(r'^[a-zA-Z]+$').hasMatch(value)) {
+                            return 'Username can only contain letters';
                           }
                           return null;
                         },
                         inputFormatters: [
-                          FilteringTextInputFormatter.deny(RegExp(r'^[0-9]+$')),
+                          FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z]')),
                         ],
                       ),
                       const SizedBox(height: 20),
@@ -153,8 +153,8 @@ class _SignupState extends State<Signup> {
                           if (value == null || value.isEmpty) {
                             return 'Please enter your password';
                           }
-                          if (value.length < 6) {
-                            return 'Password must be at least 6 characters long';
+                          if (!RegExp(r'^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$').hasMatch(value)) {
+                            return 'Password must contain letters, numbers, and symbols, and be at least 6 characters long';
                           }
                           return null;
                         },
@@ -189,13 +189,15 @@ class _SignupState extends State<Signup> {
                             ),
                           ),
                           suffixIcon: IconButton(
-                            icon: const Icon(Icons.calendar_today,color: Colors.white,),
+                            icon: const Icon(Icons.calendar_today, color: Colors.white),
                             onPressed: () async {
+                              DateTime now = DateTime.now();
+                              DateTime minDate = DateTime(now.year - 10, now.month, now.day);
                               DateTime? pickedDate = await showDatePicker(
                                 context: context,
-                                initialDate: DateTime.now(),
+                                initialDate: minDate,
                                 firstDate: DateTime(1900),
-                                lastDate: DateTime.now(),
+                                lastDate: minDate,
                               );
                               if (pickedDate != null) {
                                 String formattedDate = DateFormat('dd/MM/yyyy').format(pickedDate);
@@ -210,6 +212,11 @@ class _SignupState extends State<Signup> {
                           if (value == null || value.isEmpty) {
                             return 'Please enter your date of birth';
                           }
+                          DateTime? dob = DateFormat('dd/MM/yyyy').parseStrict(value);
+                          DateTime now = DateTime.now();
+                          if (dob.isAfter(DateTime(now.year - 10, now.month, now.day))) {
+                            return 'You must be at least 10 years old';
+                          }
                           return null;
                         },
                       ),
@@ -218,30 +225,32 @@ class _SignupState extends State<Signup> {
                         onPressed: _isLoading
                             ? null
                             : () async {
-                          if (_formKey.currentState!.validate()) {
-                            setState(() {
-                              _isLoading = true;
-                            });
-                            try {
-                              // Implement actual login logic here
-                              await Future.delayed(const Duration(seconds: 4)); // Simulating network request
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => LearningPage(username: _emailController.text),
-                                ),
-                              );
-                            } catch (e) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text('Login failed: ${e.toString()}')),
-                              );
-                            } finally {
-                              setState(() {
-                                _isLoading = false;
-                              });
-                            }
-                          }
-                        },
+                                if (_formKey.currentState!.validate()) {
+                                  setState(() {
+                                    _isLoading = true;
+                                  });
+                                  try {
+                                    // Implement actual login logic here
+                                    await Future.delayed(const Duration(seconds: 4)); // Simulating network request
+                                    if (_formKey.currentState!.validate()) {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => LearningPage(username: _emailController.text),
+                                        ),
+                                      );
+                                    }
+                                  } catch (e) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(content: Text('Login failed: ${e.toString()}')),
+                                    );
+                                  } finally {
+                                    setState(() {
+                                      _isLoading = false;
+                                    });
+                                  }
+                                }
+                              },
                         style: ElevatedButton.styleFrom(
                           minimumSize: const Size(double.infinity, 50),
                           shape: RoundedRectangleBorder(

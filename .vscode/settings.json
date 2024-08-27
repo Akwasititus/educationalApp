@@ -1,5 +1,7 @@
 {
     "cSpell.words": [
+        "Grammer",
         "solarsystem"
-    ]
+    ],
+    "cmake.configureOnOpen": false
 }

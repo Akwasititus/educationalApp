@@ -1,5 +1,3 @@
-
-
 import 'package:educationalapp/Questions/Science/sciece_questions.dart';
 import 'package:flutter/material.dart';
 import 'package:confetti/confetti.dart';
@@ -43,6 +41,26 @@ class _ResultScreenState extends State<ResultScreen> {
     return totalScore;
   }
 
+  int calculateCorrectAnswers() {
+    int correctAnswers = 0;
+    for (int i = 0; i < widget.questions.length; i++) {
+      if (widget.selectedAnswers[i] == widget.questions[i].correctAnswerIndex) {
+        correctAnswers += 1;
+      }
+    }
+    return correctAnswers;
+  }
+
+  int calculateWrongAnswers() {
+    int wrongAnswers = 0;
+    for (int i = 0; i < widget.questions.length; i++) {
+      if (widget.selectedAnswers[i] != widget.questions[i].correctAnswerIndex) {
+        wrongAnswers += 1;
+      }
+    }
+    return wrongAnswers;
+  }
+
   String getResultMessage(int totalScore) {
     if (totalScore >= 80) {
       _confettiController.play();
@@ -57,6 +75,8 @@ class _ResultScreenState extends State<ResultScreen> {
   @override
   Widget build(BuildContext context) {
     final totalScore = calculateTotalScore();
+    final correctAnswers = calculateCorrectAnswers();
+    final wrongAnswers = calculateWrongAnswers();
     final resultMessage = getResultMessage(totalScore);
 
     return Scaffold(
@@ -76,6 +96,14 @@ class _ResultScreenState extends State<ResultScreen> {
                     Text(
                       resultMessage,
                       style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      'Correct Answers: $correctAnswers',
+                      style: const TextStyle(fontSize: 20),
+                    ),
+                    Text(
+                      'Wrong Answers: $wrongAnswers',
+                      style: const TextStyle(fontSize: 20),
                     ),
                   ],
                 ),

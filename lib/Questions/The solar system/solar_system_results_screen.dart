@@ -1,11 +1,7 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:confetti/confetti.dart';
 
 import 'solar_system_question.dart';
-
-
 
 class SolarSystemResultsScreen extends StatefulWidget {
   final List<SolarSystemQuestion> questions;
@@ -18,22 +14,42 @@ class SolarSystemResultsScreen extends StatefulWidget {
   });
 
   @override
-   _SolarSystemResultsScreenState createState() => _SolarSystemResultsScreenState();
+  _SolarSystemResultsScreenState createState() => _SolarSystemResultsScreenState();
 }
 
 class _SolarSystemResultsScreenState extends State<SolarSystemResultsScreen> {
   late ConfettiController _confettiController;
+  int totalCorrectAnswers = 0;
+  int totalWrongAnswers = 0;
 
   @override
   void initState() {
     super.initState();
     _confettiController = ConfettiController(duration: const Duration(seconds: 20));
+    calculateResults(); // Calculate correct and wrong answers on initialization
   }
 
   @override
   void dispose() {
     _confettiController.dispose();
     super.dispose();
+  }
+
+  void calculateResults() {
+    totalCorrectAnswers = 0;
+    totalWrongAnswers = 0;
+
+    for (int i = 0; i < widget.questions.length; i++) {
+      if (widget.selectedAnswers[i] == widget.questions[i].correctAnswerIndex) {
+        totalCorrectAnswers++;
+      } else {
+        totalWrongAnswers++;
+      }
+    }
+
+    setState(() {
+      // Trigger UI update with new scores
+    });
   }
 
   int calculateTotalScore() {
@@ -79,6 +95,15 @@ class _SolarSystemResultsScreenState extends State<SolarSystemResultsScreen> {
                     Text(
                       resultMessage,
                       style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(height: 20),
+                    Text(
+                      'Correct Answers: $totalCorrectAnswers',
+                      style: const TextStyle(fontSize: 20, color: Colors.green),
+                    ),
+                    Text(
+                      'Wrong Answers: $totalWrongAnswers',
+                      style: const TextStyle(fontSize: 20, color: Colors.red),
                     ),
                   ],
                 ),
