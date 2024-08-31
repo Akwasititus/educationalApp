@@ -1,24 +1,10 @@
 import 'package:flutter/material.dart';
 
-
-
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Image List App',
-//       theme: ThemeData(
-//         primarySwatch: Colors.blue,
-//         visualDensity: VisualDensity.adaptivePlatformDensity,
-//       ),
-//       home: ImageListScreen(),
-//     );
-//   }
-// }
-
 class HistoryScreen extends StatelessWidget {
   final List<Map<String, String>> images = [
-    {'name': 'Elmina Castle', 'url': 'assets/Elmina castle.jpg','description':"""Almina castle 
+    {'name': 'Elmina Castle',
+      'url': 'assets/Elmina castle.jpg',
+      'description':"""
 
 Elmina Castle, officially known as São Jorge da Mina or St. George of the Mine Castle, is a historic castle located on the coast of the Central Region of Ghana. It was built by the Portuguese in 1482, making it the first European colonial building in sub-Saharan Africa. The castle was originally constructed to serve as a trading post for gold, which was abundant in the region and highly sought after in Europe. The name "Elmina" is derived from the Portuguese word "mina," meaning "mine," reflecting its association with gold mining.
 
@@ -28,10 +14,13 @@ The architecture of Elmina Castle is a blend of European and African styles, ref
 
 Today, Elmina Castle is a UNESCO World Heritage Site and serves as a museum and a memorial to the victims of the slave trade. It houses exhibits that detail the history of the transatlantic slave trade, the lives of the enslaved people, and the struggle for independence. The castle's dungeons, where captives were held before being transported to the Americas, are a powerful and moving experience for visitors.
 
-Elmina Castle is not only a historical landmark but also a symbol of the resilience and strength of the African people. It stands as a testament to the impact of the slave trade on the continent and the diaspora, and it continues to educate and inspire visitors from around the world."""},
+Elmina Castle is not only a historical landmark but also a symbol of the resilience and strength of the African people. It stands as a testament to the impact of the slave trade on the continent and the diaspora, and it continues to educate and inspire visitors from around the world."""
+    },
   
   
-    {'name': 'Kwame Nkrumah Memoty Park', 'url': 'assets/memoral park.jpg', 'description': """The Kwame Nkrumah Memorial Park is a significant historical site located in Accra, the capital city of Ghana. It was established in memory of Kwame Nkrumah, Ghana's first President and a pivotal figure in the fight for independence from British colonial rule. Nkrumah is widely regarded as one of the founding fathers of African nationalism and Pan-Africanism.
+    {'name': 'Kwame Nkrumah Memorial Park',
+      'url': 'assets/memoral park.jpg',
+      'description': """The Kwame Nkrumah Memorial Park is a significant historical site located in Accra, the capital city of Ghana. It was established in memory of Kwame Nkrumah, Ghana's first President and a pivotal figure in the fight for independence from British colonial rule. Nkrumah is widely regarded as one of the founding fathers of African nationalism and Pan-Africanism.
 
 The park is situated near the center of Accra, close to the Independence Square, which itself commemorates Ghana's independence from Britain on March 6, 1957. Nkrumah played a crucial role in achieving this independence, and his efforts and vision for a united Africa have left a lasting legacy.
 
@@ -40,7 +29,10 @@ The memorial park features a mausoleum that houses the tomb of Kwame Nkrumah, al
 In addition to the mausoleum, the park contains statues, memorials, and educational exhibits that detail the life of Kwame Nkrumah and the history of Ghana's struggle for independence. It serves as an important site for both Ghanaians and international visitors, offering a place for reflection on the themes of freedom, leadership, and the pursuit of Pan-African unity.
 
 The Kwame Nkrumah Memorial Park is not only a tribute to a great leader but also a symbol of Ghana's rich history and the ongoing quest for African solidarity and progress. It stands as a reminder of the sacrifices made for independence and the enduring hope for a bright future for Africa."""},
-    {'name': 'Kakum National Park', 'url':'assets/kakum park.jpg', 'description':"""Kakum National Park is a renowned protected area located in the Central Region of Ghana. Established in 1991, it covers an area of approximately 375 square kilometers and is known for its rich biodiversity, lush rainforest, and the remarkable Kakum Canopy Walkway.
+
+    {'name': 'Kakum National Park',
+      'url':'assets/kakum park.jpg',
+      'description':"""Kakum National Park is a renowned protected area located in the Central Region of Ghana. Established in 1991, it covers an area of approximately 375 square kilometers and is known for its rich biodiversity, lush rainforest, and the remarkable Kakum Canopy Walkway.
 
 The park is a critical habitat for a wide range of flora and fauna, including over 40 different mammal species, such as the African forest elephant, the Mona monkey, and the endangered Diana monkey. Kakum is also home to more than 250 bird species, making it a paradise for birdwatchers. The diverse ecosystem supports a variety of plant life, contributing to the park's status as an important ecological reserve.
 
@@ -73,7 +65,7 @@ In 1979, Cape Coast Castle was designated as a UNESCO World Heritage Site as par
 The castle also plays a crucial role in Ghana's Pan-African initiative, "Year of Return," which encourages the African diaspora to visit Ghana and explore their roots. Through its history and ongoing legacy, Cape Coast Castle stands as a testament to the resilience of the human spirit and the importance of understanding and learning from the past.""" },
 
 
-    {'name': 'Larabanga mosque', 'url':  'assets/larabanga mosque.jpg', 'description':"""The Larabanga Mosque, located in the small town of Larabanga in the Northern Region of Ghana, is a significant historical and cultural landmark. It is widely recognized as the oldest mosque in Ghana and one of the oldest in West Africa, with its origins dating back to the 1420s. This makes it a crucial site for understanding the spread of Islam in the region and the architectural styles that characterized early Islamic buildings in West Africa.
+    {'name': 'Larabanga mosque', 'url':  'assets/larabanga mosque.JPG', 'description':"""The Larabanga Mosque, located in the small town of Larabanga in the Northern Region of Ghana, is a significant historical and cultural landmark. It is widely recognized as the oldest mosque in Ghana and one of the oldest in West Africa, with its origins dating back to the 1420s. This makes it a crucial site for understanding the spread of Islam in the region and the architectural styles that characterized early Islamic buildings in West Africa.
 
 The mosque is a prime example of Sudano-Sahelian architectural style, characterized by its mudbrick construction and towering minaret. This style is adapted to the hot, dry climate of the Sahel, with thick walls that provide insulation and a flat roof. The Larabanga Mosque's design is simple yet elegant, with intricate wooden doors and windows that add to its aesthetic appeal.
 
@@ -122,77 +114,118 @@ Kintampo Waterfalls is not only a beautiful natural attraction but also an impor
   ];
 
   @override
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Image List'),
+        title: const Text('Historical Sites in Ghana'),
+        backgroundColor: Colors.white,
       ),
-      body: ListView.builder(
-        itemCount: images.length,
-        itemBuilder: (context, index) {
-          return Card(
-            margin: EdgeInsets.all(10),
-            child: ListTile(
-              leading: Image.network(images[index]['url']!),
-              title: Text(images[index]['name']!),
-              trailing: Icon(Icons.favorite_border),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 8.0,
+            mainAxisSpacing: 8.0,
+            childAspectRatio: 0.75,
+          ),
+          itemCount: images.length,
+          itemBuilder: (context, index) {
+            return GestureDetector(
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ImageDetailScreen(
+                    builder: (context) => DetailScreen(
                       name: images[index]['name']!,
-                      imageUrl: images[index]['url']!,
-                      description: ' ${images[index]['description']}.',
+                      url: images[index]['url']!,
+                      description: images[index]['description']!,
                     ),
                   ),
                 );
               },
-            ),
-          );
-        },
+              child: Card(
+                elevation: 4.0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Expanded(
+                      child: ClipRRect(
+                        borderRadius: const BorderRadius.vertical(top: Radius.circular(12.0)),
+                        child: Image.asset(
+                          images[index]['url']!,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        images[index]['name']!,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16.0,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
 }
 
-class ImageDetailScreen extends StatelessWidget {
+class DetailScreen extends StatelessWidget {
   final String name;
-  final String imageUrl;
+  final String url;
   final String description;
 
-  ImageDetailScreen({
-    required this.name,
-    required this.imageUrl,
-    required this.description,
-  });
+  const DetailScreen({super.key, required this.name, required this.url, required this.description});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(name),
+        backgroundColor: Colors.white,
       ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Image.network(imageUrl),
-              SizedBox(height: 16),
-              Text(
-                name,
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(16.0),
+              child: Image.asset(
+                url,
+                width: double.infinity,
+                height: 200.0,
+                fit: BoxFit.cover,
               ),
-              SizedBox(height: 16),
-              Text(
-                description,
-                style: TextStyle(fontSize: 16),
+            ),
+            const SizedBox(height: 16.0),
+            Text(
+              name,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 24.0,
               ),
-              SizedBox(height: 16),
-              Icon(Icons.favorite_border, size: 30),
-            ],
-          ),
+            ),
+            const SizedBox(height: 8.0),
+            Text(
+              description,
+              style: const TextStyle(fontSize: 16.0),
+            ),
+          ],
         ),
       ),
     );

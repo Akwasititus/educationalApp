@@ -70,6 +70,7 @@ class _SignupState extends State<Signup> {
                         controller: _emailController,
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
+                          errorStyle: const TextStyle(color: Colors.white, fontSize: 15),
                           labelText: 'Username',
                           hintText: 'username',
                           labelStyle: const TextStyle(color: Colors.white),
@@ -114,6 +115,7 @@ class _SignupState extends State<Signup> {
                         controller: _passwordController,
                         obscureText: _obscureText,
                         decoration: InputDecoration(
+                          errorStyle: const TextStyle(color: Colors.white, fontSize: 15),
                           labelText: 'Password',
                           labelStyle: const TextStyle(color: Colors.white),
                           border: OutlineInputBorder(
@@ -164,6 +166,7 @@ class _SignupState extends State<Signup> {
                         style: const TextStyle(color: Colors.white),
                         controller: _dobController,
                         decoration: InputDecoration(
+                          errorStyle: const TextStyle(color: Colors.white, fontSize: 15),
                           labelText: 'Date of Birth',
                           hintText: 'DD/MM/YYYY',
                           labelStyle: const TextStyle(color: Colors.white),
