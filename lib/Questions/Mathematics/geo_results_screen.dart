@@ -1,55 +1,36 @@
+import 'package:educationalapp/Questions/Science/sciece_questions.dart';
 import 'package:flutter/material.dart';
 import 'package:confetti/confetti.dart';
 
-import 'solar_system_question.dart';
+import 'geo_question.dart';
 
-class SolarSystemResultsScreen extends StatefulWidget {
-  final List<SolarSystemQuestion> questions;
+class GeoResultsScreen extends StatefulWidget {
+  final List<GeoQuestion> questions;
   final Map<int, int> selectedAnswers;
 
-  const SolarSystemResultsScreen({
+  const GeoResultsScreen({
     super.key,
     required this.questions,
     required this.selectedAnswers,
   });
 
   @override
-  _SolarSystemResultsScreenState createState() => _SolarSystemResultsScreenState();
+  _GeoResultsScreenState createState() => _GeoResultsScreenState();
 }
 
-class _SolarSystemResultsScreenState extends State<SolarSystemResultsScreen> {
+class _GeoResultsScreenState extends State<GeoResultsScreen> {
   late ConfettiController _confettiController;
-  int totalCorrectAnswers = 0;
-  int totalWrongAnswers = 0;
 
   @override
   void initState() {
     super.initState();
     _confettiController = ConfettiController(duration: const Duration(seconds: 20));
-    calculateResults(); // Calculate correct and wrong answers on initialization
   }
 
   @override
   void dispose() {
     _confettiController.dispose();
     super.dispose();
-  }
-
-  void calculateResults() {
-    totalCorrectAnswers = 0;
-    totalWrongAnswers = 0;
-
-    for (int i = 0; i < widget.questions.length; i++) {
-      if (widget.selectedAnswers[i] == widget.questions[i].correctAnswerIndex) {
-        totalCorrectAnswers++;
-      } else {
-        totalWrongAnswers++;
-      }
-    }
-
-    setState(() {
-      // Trigger UI update with new scores
-    });
   }
 
   int calculateTotalScore() {
@@ -60,6 +41,26 @@ class _SolarSystemResultsScreenState extends State<SolarSystemResultsScreen> {
       }
     }
     return totalScore;
+  }
+
+  int calculateCorrectAnswers() {
+    int correctAnswers = 0;
+    for (int i = 0; i < widget.questions.length; i++) {
+      if (widget.selectedAnswers[i] == widget.questions[i].correctAnswerIndex) {
+        correctAnswers += 1;
+      }
+    }
+    return correctAnswers;
+  }
+
+  int calculateWrongAnswers() {
+    int wrongAnswers = 0;
+    for (int i = 0; i < widget.questions.length; i++) {
+      if (widget.selectedAnswers[i] != widget.questions[i].correctAnswerIndex) {
+        wrongAnswers += 1;
+      }
+    }
+    return wrongAnswers;
   }
 
   String getResultMessage(int totalScore) {
@@ -76,6 +77,8 @@ class _SolarSystemResultsScreenState extends State<SolarSystemResultsScreen> {
   @override
   Widget build(BuildContext context) {
     final totalScore = calculateTotalScore();
+    final correctAnswers = calculateCorrectAnswers();
+    final wrongAnswers = calculateWrongAnswers();
     final resultMessage = getResultMessage(totalScore);
 
     return Scaffold(
@@ -96,14 +99,13 @@ class _SolarSystemResultsScreenState extends State<SolarSystemResultsScreen> {
                       resultMessage,
                       style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                     ),
-                    const SizedBox(height: 20),
                     Text(
-                      'Correct Answers: $totalCorrectAnswers',
-                      style: const TextStyle(fontSize: 20, color: Colors.green),
+                      'Correct Answers: $correctAnswers',
+                      style: const TextStyle(fontSize: 20),
                     ),
                     Text(
-                      'Wrong Answers: $totalWrongAnswers',
-                      style: const TextStyle(fontSize: 20, color: Colors.red),
+                      'Wrong Answers: $wrongAnswers',
+                      style: const TextStyle(fontSize: 20),
                     ),
                   ],
                 ),

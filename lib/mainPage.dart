@@ -1,6 +1,10 @@
-import 'package:educationalapp/Questions/Science/science.dart';
+import 'package:educationalapp/Questions/Science/science.dart'; 
 import 'package:educationalapp/maths.dart';
 import 'package:flutter/material.dart';
+
+
+import 'Questions/Grammer/grammer.dart';
+import 'history.dart';
 
 class LearningPage extends StatelessWidget {
   final String username;
@@ -84,25 +88,25 @@ class LearningPage extends StatelessWidget {
                           }, imagePath: 'assets/db_img.jpg',
                         ),
                         CustomButton(
+                          text: "History",
+                          color: Colors.green,
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>   HistoryScreen(),
+                              ),
+                            );
+                          }, imagePath: 'assets/db_img.jpg',
+                        ), 
+                        CustomButton(
                           text: "English",
                           color: Colors.green,
                           onPressed: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) =>  const Science(),
-                              ),
-                            );
-                          }, imagePath: 'assets/db_img.jpg',
-                        ),
-                        CustomButton(
-                          text: "OWOP",
-                          color: Colors.green,
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>  const Science(),
+                                builder: (context) =>  const  GrammerScreen(),
                               ),
                             );
                           }, imagePath: 'assets/db_img.jpg',

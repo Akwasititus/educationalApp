@@ -1,4 +1,3 @@
-import 'package:educationalapp/Questions/Science/sciece_questions.dart';
 import 'package:flutter/material.dart';
 import 'package:confetti/confetti.dart';
 
@@ -20,11 +19,14 @@ class HumanBodyResultsScreen extends StatefulWidget {
 
 class _HumanBodyResultsScreenState extends State<HumanBodyResultsScreen> {
   late ConfettiController _confettiController;
+  int totalCorrectAnswers = 0;
+  int totalWrongAnswers = 0;
 
   @override
   void initState() {
     super.initState();
     _confettiController = ConfettiController(duration: const Duration(seconds: 20));
+    calculateResults(); // Calculate correct and wrong answers on initialization
   }
 
   @override
@@ -33,7 +35,26 @@ class _HumanBodyResultsScreenState extends State<HumanBodyResultsScreen> {
     super.dispose();
   }
 
-  int calculateTotalScore() {
+  void calculateResults() {
+    int totalScore = 0;
+    totalCorrectAnswers = 0;
+    totalWrongAnswers = 0;
+
+    for (int i = 0; i < widget.questions.length; i++) {
+      if (widget.selectedAnswers[i] == widget.questions[i].correctAnswerIndex) {
+        totalScore += widget.questions[i].mark;
+        totalCorrectAnswers++;
+      } else {
+        totalWrongAnswers++;
+      }
+    }
+
+    setState(() {
+      // Triggers UI update
+    });
+  }
+
+    int calculateTotalScore() {
     int totalScore = 0;
     for (int i = 0; i < widget.questions.length; i++) {
       if (widget.selectedAnswers[i] == widget.questions[i].correctAnswerIndex) {
@@ -56,7 +77,10 @@ class _HumanBodyResultsScreenState extends State<HumanBodyResultsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final totalScore = calculateTotalScore();
+    final totalScore = widget.questions.fold(0, (sum, question) {
+      final selectedAnswer = widget.selectedAnswers[widget.questions.indexOf(question)];
+      return sum + (selectedAnswer == question.correctAnswerIndex ? question.mark : 0);
+    });
     final resultMessage = getResultMessage(totalScore);
 
     return Scaffold(
@@ -76,6 +100,15 @@ class _HumanBodyResultsScreenState extends State<HumanBodyResultsScreen> {
                     Text(
                       resultMessage,
                       style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(height: 20),
+                    Text(
+                      'Correct Answers: $totalCorrectAnswers',
+                      style: const TextStyle(fontSize: 20, color: Colors.green),
+                    ),
+                    Text(
+                      'Wrong Answers: $totalWrongAnswers',
+                      style: const TextStyle(fontSize: 20, color: Colors.red),
                     ),
                   ],
                 ),

@@ -28,8 +28,8 @@ final List<Question> questions = [
   ),
   Question(
     questionText: 'What gas do plants release during photosynthesis?',
-    options: ['Carbon Dioxide', 'Oxygen', 'Nitrogen', 'Hydrogen'],
-    correctAnswerIndex: 1,
+    options: ['Oxygen', 'Carbon Dioxide', 'Nitrogen', 'Hydrogen'],
+    correctAnswerIndex: 0,
     mark: 10,
   ),
   Question(
@@ -40,8 +40,8 @@ final List<Question> questions = [
   ),
   Question(
     questionText: 'What is the largest land animal in the world?',
-    options: ['Lion', 'Elephant', 'Hippopotamus', 'Giraffe'],
-    correctAnswerIndex: 1,
+    options: ['Elephant', 'Lion', 'Hippopotamus', 'Giraffe'],
+    correctAnswerIndex: 0,
     mark: 10,
   ),
   Question(
